@@ -13,15 +13,17 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th>#</th>
+            <th>ID</th>
+            <th>Category</th>
             <th>Name</th>
-            <th>#</th>
+            <th>show | edit | delete</th>
           </tr>
         </thead>
         <tbody>
           <% @restaurants.each do |restaurant| %>
           <tr>
             <th scope="row"><%= restaurant.id %></th>
+            <td>[<%= restaurant.category.name %>]</td>
             <td><%= restaurant.name %></td>
             <td>
               <span><%= link_to '   ', admin_restaurant_path(restaurant), class: "glyphicon glyphicon-folder-open" %></span>  | 

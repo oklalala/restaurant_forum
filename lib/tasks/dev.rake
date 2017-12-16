@@ -14,4 +14,12 @@ namespace :dev do
     puts "have created fake restaurants"
     puts "now you have #{Restaurant.count} restaurants data"
   end
+
+  task fake_p: :environment do
+    uploaders = Restaurant.first(10).map(&:image)
+    Restaurant.last(490).each do |restaurant|
+      restaurant.image = uploaders.sample
+    end
+    puts "other fake image"
+  end
 end

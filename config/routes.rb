@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   root "restaurants#index"
 
   namespace :admin do
-    resources :restaurants do
-      resources :comments
-    end
+    resources :restaurants
     resources :categories
     root "restaurants#index"
   end

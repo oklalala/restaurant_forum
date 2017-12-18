@@ -24,5 +24,11 @@
 
     <hr>
 
+    <%= form_for [@restaurant, @comment] do |f| %>
+      <%= f.text_area :content, placeholeder: "留個言吧" %>
+      <%= f.submit %>
+      <%= f.button "Cancel", type: :reset%>
+    <% end %>
+
   </div>
 </div>

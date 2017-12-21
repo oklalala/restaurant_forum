@@ -25,7 +25,14 @@
     <hr>
     <% @restaurant.comments.each do |comment| %>
     <div>
-      <h4><%= comment.user.email.split("@").first   %></h4>
+      <h4>
+        <% if comment.user.name %>
+          <%= comment.user.name %>
+        <% else %>
+          <%= comment.user.email.split("@").first %>
+        <% end %>
+      </h4>
+
       <p><%= simple_format comment.content %></p> 
       <p class="text-muted">
         <em><%= time_ago_in_words(comment.created_at) %></em>

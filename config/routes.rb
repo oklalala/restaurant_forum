@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "restaurants#index"
+  
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :restaurants, only: [:index, :show] do
@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit, :update]
-  resources :categories, only: :show
   
-
+  resources :categories, only: :show
+  root "restaurants#index"
+  
   namespace :admin do
     resources :restaurants
     resources :categories

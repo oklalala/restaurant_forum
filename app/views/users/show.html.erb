@@ -1,8 +1,8 @@
-<div class="container">
+<div class="intro">
   <div class="avatar">
     <%= image_tag current_user.avatar, class: "img-responsive img-circle"%>
   </div>
-  <div class="intro">
+  <div class="intro-text">
     <h2><%= current_user.name %></h2>
     <p><%= current_user.email %></p>
     <h3><%= current_user.intro %></h3>
@@ -15,16 +15,16 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= "#{@user.comments.count}則 已評論餐廳" %>
+      <%= "#{@user.comments.count}則評論 #{@commented_restaurants.uniq.count}間已評論餐廳" %>
     </h3>
   </div>
   <div class="panel-body">
-    <% @commented_restaurants.each do |restaurant| %>
+    <% @commented_restaurants.uniq.each do |restaurant| %>
     <div class="my-restaurant">
       <!-- <div class="avatar-restaurant" > -->
         <%= image_tag "pic_#{rand(78).to_s.rjust(3,'0')}.jpg", class: "img-responsive center-block" %>
       <!-- </div> -->
-      <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+      <%= link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>
     </div>
     <% end %>
   </div> 

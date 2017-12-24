@@ -10,13 +10,6 @@
   width: 100%;
 }
 
-.avatar img{
-  height: 200px;
-  width: 200px;
-  float: left;
-  margin-right: 40px;
-}
-
 .restaurant-item .caption {
   padding: 10px;
 }
@@ -30,6 +23,26 @@
   display:  inline-block;
 }
 
+.avatar {
+  height: 200px;
+  width: 200px;
+  float: left;
+  margin: 0px 40px 10px 0px;
+  display: block;
+}
+
+.avatar img{
+  height: 100%;
+  width: 100%;
+}
+
+.intro{
+  padding: 80px;
+  min-height: 360px;
+  display: block;
+
+}
+
 .my-restaurant{
   float:left;
   padding:10px;
@@ -39,9 +52,4 @@
   max-height: 120px;
   border-radius: 20px;
   padding:10px;
-}
-
-.intro{
-  padding: 80px;
-
 }

@@ -3,16 +3,17 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     @commented_restaurants = @user.restaurants
   end
+
   def edit
   end
+
   def update
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to user_path(@user)
-      flash[:notice] = "#{@user.name} was successfully updated"
+    if current_user.update(user_params)
+      redirect_to user_path(current_user)
+      flash[:notice] = "#{current_user.name} was successfully updated"
     else
       render :edit
-      flash[:alert] = "#{@user.name} was failed to update"
+      flash[:alert] = "#{current_user.name} was failed to update"
     end
   end
 

@@ -1,13 +1,14 @@
 <div class="intro">
   <div class="avatar">
-    <%= image_tag current_user.avatar, class: "img-responsive img-circle"%>
+    <%= image_tag "pic1_#{rand(107).to_s.rjust(3,'0')}.jpg", class: "img-responsive img-circle" %>
+    <% #image_tag @user.avatar, class: "img-responsive img-circle"%>
   </div>
   <div class="intro-text">
-    <h2><%= current_user.name %></h2>
-    <p><%= current_user.email %></p>
-    <h3><%= current_user.intro %></h3>
+    <h2><%= @user.name %></h2>
+    <p><%= @user.email %></p>
+    <h3><%= @user.intro %></h3>
     <div class="button">
-      <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary"%>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" if @user==current_user%>
     </div>
   </div>
 </div>
@@ -20,12 +21,16 @@
   </div>
   <div class="panel-body">
     <% @commented_restaurants.uniq.each do |restaurant| %>
-    <div class="my-restaurant">
-      <!-- <div class="avatar-restaurant" > -->
-        <%= image_tag "pic_#{rand(78).to_s.rjust(3,'0')}.jpg", class: "img-responsive center-block" %>
-      <!-- </div> -->
-      <%= link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>
-    </div>
+      <%= link_to (restaurant) do %>
+      <% #link_to restaurant_path(restaurant) do%>
+        <div class="my-restaurant">
+          <!-- <div class="avatar-restaurant" > -->
+            <%= image_tag "pic_#{rand(78).to_s.rjust(3,'0')}.jpg", class: "img-responsive center-block" %>
+          <!-- </div> -->
+          <% #link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>
+          <%= restaurant.name %>
+        </div>
+      <% end %>
     <% end %>
   </div> 
 </div>

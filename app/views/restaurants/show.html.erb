@@ -26,11 +26,14 @@
     <% @restaurant.comments.each do |comment| %>
     <div>
       <h4>
-        <% if comment.user.name %>
-          <%= comment.user.name %>
-        <% else %>
-          <%= comment.user.email.split("@").first %>
-        <% end %>
+        <%= link_to "#{
+          if comment.user.name 
+            comment.user.name 
+          else 
+            comment.user.email.split("@").first 
+          end 
+        }", user_path(comment.user) %>
+        
       </h4>
 
       <p><%= simple_format comment.content %></p> 

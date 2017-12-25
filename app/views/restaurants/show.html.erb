@@ -46,11 +46,21 @@
     </div>
     <hr>
     <% end %>
+    
 
-    <%= form_for [@restaurant,@comment] do |f| %>
-      <%= f.text_area :content, placeholeder: "留個言吧" %>
-      <%= f.submit %>
-      <%= f.button "Cancel", type: :reset%>
+    <form>
+      <div class="form-group">
+        <%= form_for [@restaurant,@comment] do |f| %>
+        <label for="exampleInputEmail1"></label>
+        <%= f.text_area :content, placeholeder: "留個言吧", class: "form-control" %>
+        <!-- <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> -->
+      </div>
+      <%= f.submit class: "btn btn-default" %>
+      <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default"%>
+    </form>
+
+    
     <% end %>
 
   </div>

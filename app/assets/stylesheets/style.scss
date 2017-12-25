@@ -46,12 +46,17 @@
 .my-restaurant{
   float:left;
   padding:10px;
+  opacity: 1;
 }
 
 .my-restaurant img{
   max-height: 120px;
   border-radius: 20px;
   padding:10px;
+}
+
+.my-restaurant:hover{
+  opacity: 0.2;
 }
 
 .center .h5 {

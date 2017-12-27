@@ -11,4 +11,9 @@ class RestaurantsController < ApplicationController
     # @user = Comment.users.find(params[:id])
     @comment = Comment.new
   end
+
+  def feeds
+    @recent_restaurants = Restaurant.order(created_at: :desc).limit(5)
+    @recent_comments = Comment.order(created_at: :desc).limit(5)
+  end
 end

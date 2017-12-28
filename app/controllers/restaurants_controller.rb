@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
   end
 
   def dashboard
-    @restautant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
   end
 
 end

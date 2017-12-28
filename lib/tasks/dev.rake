@@ -16,7 +16,7 @@ namespace :dev do
   end
 
   task fake_user: :environment do
-
+    
     20.times do |i|
       User.create!(email: FFaker::Internet.email,
         password: "123123"
@@ -27,6 +27,7 @@ namespace :dev do
   end
 
   task fake_comment: :environment do
+    Comment.destroy_all
     Restaurant.all.each do |restaurant|
       3.times do |i|
         restaurant.comments.create!(content: FFaker::Lorem.paragraph,

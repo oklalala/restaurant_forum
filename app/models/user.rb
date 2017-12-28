@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy#原本的指令，比較想用砍掉了使用者，依然會留著留言
   has_many :restaurants, through: :comments
   
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_restaurants, through: :favorites, source: :restaurant
 
   def admin?
     self.role == "admin"

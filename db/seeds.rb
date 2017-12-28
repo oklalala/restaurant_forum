@@ -25,5 +25,6 @@ end
 puts "Category created!"
 
 # Default admin
+User.destroy_all
 User.create(email: "123@123.123", password: "123123", role: "admin")
 puts "Default admin created!"

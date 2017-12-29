@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-
+  before_action :set_restaurant, except: [:index, :feeds]
 
   def index
     @restaurants = Restaurant.page(params[:page]).per(9)
@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    #@restaurant = Restaurant.find(params[:id])
     # @user = Comment.users.find(params[:id])
     @comment = Comment.new
   end
@@ -18,6 +18,21 @@ class RestaurantsController < ApplicationController
   end
 
   def dashboard
+    # @restaurant = Restaurant.find(params[:id])
+  end
+
+  def favorite
+    @restaurant.favorites.create!(user: current_user)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def unfavorite
+    @restaurant
+  end
+
+  private
+
+  def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
 

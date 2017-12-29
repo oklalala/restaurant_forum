@@ -22,12 +22,14 @@ class RestaurantsController < ApplicationController
   end
 
   def favorite
-    @restaurant.favorites.create!(user: current_user)
+    Favorite.create(restaurant: @restaurant, user: current_user)
     redirect_back(fallback_location: root_path)
   end
 
   def unfavorite
-    @restaurant
+    favorite = Favorite.where(restaurant: @restaurant, user: current_user)
+    favorite.delete_all
+    redirect_back(fallback_location: root_path)
   end
 
   private

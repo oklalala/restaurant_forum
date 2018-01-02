@@ -2,8 +2,8 @@
 
 <ul class="nav nav-tabs">
   <li role="presentation"><%= link_to "首頁", root_path %></li>
-  <li role="presentation" class="active"><%= link_to "餐廳最新動態", feeds_restaurants_path %></li>
-  <li role="presentation"><%= link_to "TOP10 人氣餐廳", ranking_restaurants_path %></li>
+  <li role="presentation"><%= link_to "餐廳最新動態", feeds_restaurants_path %></li>
+  <li role="presentation" class="active"><%= link_to "TOP10 人氣餐廳", ranking_restaurants_path %></li>
 </ul>
 
 <br>
@@ -12,10 +12,10 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">最新餐廳</h3>
+        <h3 class="panel-title">TOP 10 人氣餐廳</h3>
       </div>
       <div class="panel-body">
-        <% @recent_restaurants.each do |restaurant| %>
+        <% @top_restaurants.each do |restaurant| %>
           <h2><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></h2>
           <p><%= restaurant.category.name %></p>
           <h5><%= restaurant.description %></h5>

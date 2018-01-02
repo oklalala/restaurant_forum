@@ -26,5 +26,5 @@ puts "Category created!"
 
 # Default admin
 User.destroy_all
-User.create(email: "123@123.123", password: "123123", role: "admin")
+User.create(name:"Wahaha", email: "123@123.123", password: "123123", role: "admin", intro: "This is gourmet.")
 puts "Default admin created!"

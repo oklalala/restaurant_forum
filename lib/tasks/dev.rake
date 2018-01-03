@@ -42,7 +42,7 @@ namespace :dev do
   task fake_favorite: :environment do
     Favorite.destroy_all
     User.all.each do |user|
-      rand(80).times do |i|
+      rand(100).times do |i|
         user.favorites.create!(user_id: user.id, 
           restaurant_id: Restaurant.all.sample.id)
       end

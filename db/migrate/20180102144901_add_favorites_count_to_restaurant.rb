@@ -1,5 +1,5 @@
 class AddFavoritesCountToRestaurant < ActiveRecord::Migration[5.1]
   def change
-    add_column :restaurants, :favorites_count, :interger
+    add_column :restaurants, :favorites_count, :interger, default: 0
   end
 end

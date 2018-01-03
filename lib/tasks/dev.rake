@@ -39,6 +39,22 @@ namespace :dev do
     puts "now you have #{Comment.count} comments data"
   end
 
+  task fake_favorite: :environment do
+    Favorite.destroy_all
+    User.all.each do |user|
+      rand(80).times do |i|
+        user.favorites.create!(user_id: user.id, 
+          restaurant_id: Restaurant.all.sample.id)
+      end
+    end
+    Restaurant.all.each do |restaurant|
+      restaurant.favorites_count = Favorite.where(restaurant_id: restaurant.id).count
+      restaurant.save
+    end
+    puts "have created fake favorites"
+    puts "now you have #{Favorite.count} favorites data"
+  end
+
   task fake_p: :environment do
     uploaders = Restaurant.first(10).map(&:image)
     Restaurant.last(490).each do |restaurant|

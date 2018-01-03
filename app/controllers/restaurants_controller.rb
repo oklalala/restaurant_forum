@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, except: [:index, :feeds]
+  before_action :set_restaurant, except: [:index, :feeds, :ranking]
 
   def index
     @restaurants = Restaurant.page(params[:page]).per(9)
@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
   end
 
   def ranking
-    @top_restaurants = Restaurant.order(favorites_count: :desc).limit(5)
+    @top_restaurants = Restaurant.order(favorites_count: :desc).limit(10)
   end
 
   def dashboard
@@ -28,12 +28,16 @@ class RestaurantsController < ApplicationController
   def favorite
     Favorite.create(restaurant: @restaurant, user: current_user)
     redirect_back(fallback_location: root_path)
+    @restaurant.favorites_count += 1
+    @restaurant.save
   end
 
   def unfavorite
     favorite = Favorite.where(restaurant: @restaurant, user: current_user)
     favorite.delete_all
     redirect_back(fallback_location: root_path)
+    @restaurant.favorites_count-=1
+    @restaurant.save
   end
 
   def like

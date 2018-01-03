@@ -2,7 +2,7 @@ namespace :dev do
   task fake_restaurant: :environment do
     Restaurant.destroy_all
 
-    500.times do |i|
+    200.times do |i|
       Restaurant.create!(name: FFaker::Name.first_name,
         opening_hours: FFaker::Time.datetime,
         tel_no: FFaker::PhoneNumber.short_phone_number,
@@ -42,7 +42,7 @@ namespace :dev do
   task fake_favorite: :environment do
     Favorite.destroy_all
     User.all.each do |user|
-      rand(100).times do |i|
+      rand(50).times do |i|
         user.favorites.create!(user_id: user.id, 
           restaurant_id: Restaurant.all.sample.id)
       end

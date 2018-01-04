@@ -3,7 +3,9 @@ namespace :dev do
     Restaurant.destroy_all
 
     200.times do |i|
-      Restaurant.create!(name: FFaker::Name.first_name,
+      Restaurant.create!(
+        id: i+1,
+        name: FFaker::Name.first_name,
         opening_hours: FFaker::Time.datetime,
         tel_no: FFaker::PhoneNumber.short_phone_number,
         address: FFaker::Address.street_address,
@@ -18,7 +20,9 @@ namespace :dev do
   task fake_user: :environment do
     
     20.times do |i|
-      User.create!(email: FFaker::Internet.email,
+      User.create!(
+        id: i+1,
+        email: FFaker::Internet.email,
         password: "123123"
       )
     end
@@ -30,7 +34,8 @@ namespace :dev do
     Comment.destroy_all
     Restaurant.all.each do |restaurant|
       3.times do |i|
-        restaurant.comments.create!(content: FFaker::Lorem.paragraph,
+        restaurant.comments.create!(
+          content: FFaker::Lorem.paragraph,
           user: User.all.sample
         )
       end
@@ -43,7 +48,8 @@ namespace :dev do
     Favorite.destroy_all
     User.all.each do |user|
       rand(50).times do |i|
-        user.favorites.create!(user_id: user.id, 
+        user.favorites.create!(
+          user_id: user.id, 
           restaurant_id: Restaurant.all.sample.id)
       end
     end

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update]
-  resources :following, only: [:create, :destroy]
+  resources :followships, only: [:create, :destroy]
   
   resources :categories, only: :show
   root "restaurants#index"

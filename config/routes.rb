@@ -14,13 +14,13 @@ Rails.application.routes.draw do
       get :dashboard
       post :favorite
       post :unfavorite
-
       post :like
       post :unlike
     end
   end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
+  resources :following, only: [:create, :destroy]
   
   resources :categories, only: :show
   root "restaurants#index"

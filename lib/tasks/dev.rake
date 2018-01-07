@@ -1,5 +1,6 @@
 namespace :dev do
-  task fake_restaurant: :environment do
+  # task fake_restaurant: :environment do
+  task fake: :environment do
     Restaurant.destroy_all
 
     200.times do |i|
@@ -15,9 +16,9 @@ namespace :dev do
     end
     puts "have created fake restaurants"
     puts "now you have #{Restaurant.count} restaurants data"
-  end
+  # end
 
-  task fake_user: :environment do
+  # task fake_user: :environment do
     
     20.times do |i|
       User.create!(
@@ -28,9 +29,9 @@ namespace :dev do
     end
     puts "have created fake users"
     puts "now you have #{User.count} users data"
-  end
+  # end
 
-  task fake_comment: :environment do
+  # task fake_comment: :environment do
     Comment.destroy_all
     Restaurant.all.each do |restaurant|
       3.times do |i|
@@ -42,9 +43,9 @@ namespace :dev do
     end
     puts "have created fake comments"
     puts "now you have #{Comment.count} comments data"
-  end
+  # end
 
-  task fake_favorite: :environment do
+  # task fake_favorite: :environment do
     Favorite.destroy_all
     User.all.each do |user|
       rand(50).times do |i|

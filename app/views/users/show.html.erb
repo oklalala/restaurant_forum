@@ -25,7 +25,7 @@
       <% #link_to restaurant_path(restaurant) do%>
         <div class="my-restaurant">
           <!-- <div class="avatar-restaurant" > -->
-            <%= image_tag "pic_#{rand(78).to_s.rjust(3,'0')}.jpg", class: "img-responsive center-block" %>
+            <%= image_tag restaurant.image, class: "img-responsive center-block" %>
           <!-- </div> -->
           <% #link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>
           <div class="center" ><%= restaurant.name %></div> 

@@ -20,7 +20,7 @@
         <% @top_restaurants.each do |restaurant| %>
         <div>
           <div class="avatar">
-            <%= image_tag "pic_#{rand(78).to_s.rjust(3,'0')}.jpg", class: "img-responsive" %>
+            <%= image_tag restaurant.image, class: "img-responsive" %>
             <% #image_tag @user.avatar, class: "img-responsive img-circle"%>
           </div>
           <h2><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> <span>收藏數：<%= "#{restaurant.favorites_count}"%></span class= "btn btn-default" ></h2>

@@ -1,6 +1,6 @@
 <div class="intro">
   <div class="avatar">
-    <%= image_tag "pic1_#{rand(72).to_s.rjust(3,'0')}.jpg", class: "img-responsive img-circle" %>
+    <%= image_tag @user.avatar, class: "img-responsive img-circle" %>
     <% #image_tag @user.avatar, class: "img-responsive img-circle"%>
   </div>
   <div class="intro-text">

@@ -3,7 +3,7 @@
     <div class="restaurant-item">
       <!-- <img src="public/uploads/restaurant/image/1/pic_<%=(rand(78)+1).to_s.rjust(3,'0')%>.jpg" class= "img-responsive center-block"> -->
       <% #image_tag restaurant.image, class: "img-responsive center-block" %>
-      <%= image_tag "pic_#{rand(78).to_s.rjust(3,'0')}.jpg" , class: "img-responsive center-block" %>
+      <%= image_tag restaurant.image , class: "img-responsive center-block" %>
       <div class="caption">
         <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
         <p class="label label-default"><%= restaurant.category.name %><p>

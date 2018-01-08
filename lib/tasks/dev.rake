@@ -6,6 +6,7 @@ namespace :dev do
     200.times do |i|
       Restaurant.create!(
         id: i+1,
+        image: File.new(Rails.root.join('app', 'assets', 'images', "pic_#{rand(78).to_s.rjust(3,'0')}.jpg")),
         name: FFaker::Name.first_name,
         opening_hours: FFaker::Time.datetime,
         tel_no: FFaker::PhoneNumber.short_phone_number,

@@ -5,12 +5,25 @@
   <li role="presentation" class="active"><%= link_to "美食達人", users_path %></li>
 </ul>
 
-<ul>
+<h1>美食達人</h1>
+<hr>
+
+<div class="container">
   <% @users.each do |user| %>
-  <li>
-    <%= user.email %>
-    <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
-    <%= link_to 'Unfollow', followship_path(user), method: :delete %>
-  </li>
+    <div class="center">
+      <%= image_tag user.avatar, class: "img-responsive center-block" %>
+    </div>
+    <div class="center">
+      <%= link_to "#{
+          if user.name 
+            user.name 
+          else 
+            user.email.split("@").first 
+          end 
+        }", user_path(user) %>
+    </div>
+    <div class="center">
+      <%= render partial: "shared/follow", locals: {user: user} %>
+    </div>
   <% end %>
-</ul>
+</div>

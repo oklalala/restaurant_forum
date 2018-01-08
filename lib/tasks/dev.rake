@@ -23,6 +23,7 @@ namespace :dev do
     20.times do |i|
       User.create!(
         id: i+1,
+        avatar: File.new(Rails.root.join('app', 'assets', 'images', "pic1_#{rand(72).to_s.rjust(3,'0')}.jpg")),
         email: FFaker::Internet.email,
         password: "123123"
       )

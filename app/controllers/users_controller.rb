@@ -22,6 +22,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def friend_list
+    @user=User.find(params[:id])
+    @friend_list = @user.all_friends
+  end
+
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :intro, :avatar)

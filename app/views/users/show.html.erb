@@ -10,6 +10,11 @@
     <h3><%= @user.intro %></h3>
     <div class="button">
       <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" if @user==current_user%>
+      <%= link_to 'Show Friend', friend_list_user_path(@user), class: "btn btn-primary" %>
+      <% if @user != current_user %>
+        <%= render partial: "shared/follow", locals: {user: @user} %>
+        <%= render partial: "shared/friend", locals: {user: @user} %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -28,7 +33,7 @@
           <% @user.followings.each do |following| %>
             <%= link_to (following) do %>
               <div class="small-box">
-                <div class="avatar-list">
+                <div class="float-left avatar-list">
                   <%= image_tag following.avatar, class: "img-responsive center-block img-circle" %>
                 </div>
                 <div class="" >
@@ -58,18 +63,18 @@
           <% @user.followers.each do |follower| %>
             <%= link_to (follower) do %>
               <div class="small-box">
-                <div class="avatar-list">
+                <div class="float-left avatar-list">
                   <%= image_tag follower.avatar, class: "img-responsive center-block img-circle" %>
                 </div>
                 <div class="" >
                   <br>
-                  <h4><%= link_to "#{
+                  <p><h4><%= link_to "#{
                         if follower.name 
                           follower.name 
                         else 
                           follower.email.split("@").first 
                         end 
-                      }", user_path(follower) %></h4>
+                      }", user_path(follower) %></h4></p>
                 </div>
               </div>
               <div style="clear:both;"></div>

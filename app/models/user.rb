@@ -14,17 +14,19 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurant
 
+##follow
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
-  has_many :Friendships, dependent: :destroy
+##friend
+  has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
-  has_many :followers, through: :inverse_followships, source: :user
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   def admin?
     self.role == "admin"
@@ -32,5 +34,14 @@ class User < ApplicationRecord
 
   def following?(user)
     self.followings.include?(user)
+  end
+
+  def all_friends
+    (friends + inverse_friends).uniq
+  end
+
+  def friend?(user)
+    self.friends.include?(user) || self.inverse_friends.include?(user)
+    #all_friends.include?(user)
   end
 end

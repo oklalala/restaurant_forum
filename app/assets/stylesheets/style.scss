@@ -40,6 +40,7 @@
 .avatar .avatar-list img{
   height: 100%;
   width: 100%;
+  margin: auto;
 }
 
 .my-restaurant{
@@ -69,13 +70,24 @@
 
 .small-box{
   overflow: inline;
-  margin: 20px;
+  margin: 40px;
+  opacity: 1;
+}
+
+.small-box:hover{
+  opacity: 0.5;
 }
 
 .avatar-list {
   height: 80px;
   width: 80px;
-  float: left;
-  margin: 0px 40px 10px 0px;
+  margin: 0px,40px,20px,0px;
+  display: block;
+}
+
+.avatar-index {
+  height: 120px;
+  width: 120px;
+  margin: auto;
   display: block;
 }

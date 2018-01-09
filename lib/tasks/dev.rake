@@ -20,11 +20,11 @@ namespace :dev do
   # end
 
   # task fake_user: :environment do
-    
+    num = [*0..72].sample(20)
     20.times do |i|
       User.create!(
         id: i+2,
-        avatar: File.new(Rails.root.join('app', 'assets', 'images', "pic1_#{rand(72).to_s.rjust(3,'0')}.jpg")),
+        avatar: File.new(Rails.root.join('app', 'assets', 'images', "pic1_#{num[i].to_s.rjust(3,'0')}.jpg")),
         email: FFaker::Internet.email,
         password: "123123"
       )
@@ -62,9 +62,9 @@ namespace :dev do
     end
     puts "have created fake favorites"
     puts "now you have #{Favorite.count} favorites data"
-  end
+  # end
 
-  task fake_followship: :environment do
+  # task fake_followship: :environment do
     Followship.destroy_all
     User.all.each do |user|
       rand_user = User.select{|x| x!=user}.sample(5)
@@ -77,6 +77,21 @@ namespace :dev do
    
     puts "have created fake followship"
     puts "now you have #{Followship.count} followships data"
+  # end
+
+  # task fake_friendship: :environment do
+    Friendship.destroy_all
+    User.all.each do |user|
+      rand_user = User.select{|x| x!=user}.sample(5)
+      rand(5).times do |i|
+        user.friendships.create!(
+          user_id: user.id, 
+          friend_id: rand_user[i].id)
+      end
+    end
+   
+    puts "have created fake friendship"
+    puts "now you have #{Friendship.count} friendships data"
   end
 
   # task fake_p: :environment do

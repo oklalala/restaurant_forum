@@ -23,7 +23,7 @@ namespace :dev do
     
     20.times do |i|
       User.create!(
-        id: i+1,
+        id: i+2,
         avatar: File.new(Rails.root.join('app', 'assets', 'images', "pic1_#{rand(72).to_s.rjust(3,'0')}.jpg")),
         email: FFaker::Internet.email,
         password: "123123"
@@ -64,11 +64,26 @@ namespace :dev do
     puts "now you have #{Favorite.count} favorites data"
   end
 
-  task fake_p: :environment do
-    uploaders = Restaurant.first(10).map(&:image)
-    Restaurant.last(490).each do |restaurant|
-      restaurant.image = uploaders.sample
+  task fake_followship: :environment do
+    Followship.destroy_all
+    User.all.each do |user|
+      rand_user = User.select{|x| x!=user}.sample(5)
+      rand(5).times do |i|
+        user.followships.create!(
+          user_id: user.id, 
+          following_id: rand_user[i].id)
+      end
     end
-    puts "other fake image"
+   
+    puts "have created fake followship"
+    puts "now you have #{Followship.count} followships data"
   end
+
+  # task fake_p: :environment do
+  #   uploaders = Restaurant.first(10).map(&:image)
+  #   Restaurant.last(490).each do |restaurant|
+  #     restaurant.image = uploaders.sample
+  #   end
+  #   puts "other fake image"
+  # end
 end

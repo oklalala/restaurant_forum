@@ -27,16 +27,22 @@
         <div class="panel-body">
           <% @user.followings.each do |following| %>
             <%= link_to (following) do %>
-            <% #link_to restaurant_path(restaurant) do%>
-              <div class="float-left">
-                <div class="avatar">
-                  <!-- <div class="avatar-restaurant" > -->
-                    <%= image_tag following.avatar, class: "img-responsive center-block" %>
-                  <!-- </div> -->
-                  <% #link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>  
+              <div class="small-box">
+                <div class="avatar-list">
+                  <%= image_tag following.avatar, class: "img-responsive center-block img-circle" %>
+                </div>
+                <div class="" >
+                  <br>
+                  <h4><%= link_to "#{
+                        if following.name 
+                          following.name 
+                        else 
+                          following.email.split("@").first 
+                        end 
+                      }", user_path(following) %></h4>
                 </div>
               </div>
-              <div class="center" ><%= following.email %></div>
+              <div style="clear:both;"></div>
             <% end %>
           <% end %>
         </div> 
@@ -51,16 +57,22 @@
         <div class="panel-body">
           <% @user.followers.each do |follower| %>
             <%= link_to (follower) do %>
-            <% #link_to restaurant_path(restaurant) do%>
-              <div class="float-left">
-                <div class="avatar">
-                  <!-- <div class="avatar-restaurant" > -->
-                    <%= image_tag follower.avatar, class: "img-responsive center-block" %>
-                  <!-- </div> -->
-                  <% #link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>  
+              <div class="small-box">
+                <div class="avatar-list">
+                  <%= image_tag follower.avatar, class: "img-responsive center-block img-circle" %>
+                </div>
+                <div class="" >
+                  <br>
+                  <h4><%= link_to "#{
+                        if follower.name 
+                          follower.name 
+                        else 
+                          follower.email.split("@").first 
+                        end 
+                      }", user_path(follower) %></h4>
                 </div>
               </div>
-              <div class="center" ><%= follower.email %></div>
+              <div style="clear:both;"></div>
             <% end %>
           <% end %>
         </div> 

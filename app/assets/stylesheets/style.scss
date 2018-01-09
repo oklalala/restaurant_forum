@@ -23,6 +23,12 @@
   display:  inline-block;
 }
 
+.intro{
+  padding: 80px;
+  min-height: 360px;
+  display: block;
+}
+
 .avatar {
   height: 180px;
   width: 180px;
@@ -31,16 +37,9 @@
   display: block;
 }
 
-.avatar img{
+.avatar .avatar-list img{
   height: 100%;
   width: 100%;
-}
-
-.intro{
-  padding: 80px;
-  min-height: 360px;
-  display: block;
-
 }
 
 .my-restaurant{
@@ -67,7 +66,16 @@
   float: left;
   margin-right: 20px;
 }
+
 .small-box{
   overflow: inline;
   margin: 20px;
+}
+
+.avatar-list {
+  height: 80px;
+  width: 80px;
+  float: left;
+  margin: 0px 40px 10px 0px;
+  display: block;
 }

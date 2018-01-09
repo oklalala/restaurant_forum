@@ -27,6 +27,7 @@ puts "Category created!"
 # Default admin
 User.destroy_all
 User.create(
+  id: "1",
   name:"Wahaha", 
   email: "123@123.123", 
   password: "123123", 

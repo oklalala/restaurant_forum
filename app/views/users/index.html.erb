@@ -8,8 +8,9 @@
 <h1>美食達人</h1>
 <hr>
 
-<div class="container">
-  <% @users.each do |user| %>
+
+<% @users.each do |user| %>
+  <div class="container col-md-3 col-sm-4 col-xs-6 text-center user-item">
     <div class="center">
       <%= image_tag user.avatar, class: "img-responsive center-block" %>
     </div>
@@ -25,5 +26,5 @@
     <div class="center">
       <%= render partial: "shared/follow", locals: {user: user} %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

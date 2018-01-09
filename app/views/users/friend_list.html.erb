@@ -8,7 +8,6 @@
 <hr>
 <div class="row">
   <% @friend_list.each do |friend| %>
-    <% if friend!=current_user%>
       <div class="col-md-3 col-sm-4 col-xs-6">
         <div class="center avatar-index">
           <%= image_tag friend.avatar, class: "img-responsive center-block" %>
@@ -31,9 +30,6 @@
         <br>
         <br>
       </div>
-
-    <% end %>
-
   <% end %>
 
 </div>

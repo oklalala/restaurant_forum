@@ -6,6 +6,7 @@
   <div class="intro-text">
     <h2><%= @user.name %></h2>
     <p><%= @user.email %></p>
+    <%= "#{@commented_restaurants.uniq.count}已評論餐廳 #{@user.favorites.count}收藏餐廳 #{@user.followings.count} followings #{@user.followers.count} followers"%>
     <h3><%= @user.intro %></h3>
     <div class="button">
       <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" if @user==current_user%>
@@ -13,24 +14,56 @@
   </div>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      <%= "#{@user.comments.count}則評論 #{@commented_restaurants.uniq.count}間已評論餐廳" %>
-    </h3>
-  </div>
-  <div class="panel-body">
-    <% @commented_restaurants.uniq.each do |restaurant| %>
-      <%= link_to (restaurant) do %>
-      <% #link_to restaurant_path(restaurant) do%>
-        <div class="my-restaurant">
-          <!-- <div class="avatar-restaurant" > -->
-            <%= image_tag restaurant.image, class: "img-responsive center-block" %>
-          <!-- </div> -->
-          <% #link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>
-          <div class="center" ><%= restaurant.name %></div> 
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= "#{@user.comments.count}則評論 #{@commented_restaurants.uniq.count}間已評論餐廳" %>
+          </h3>
         </div>
-      <% end %>
-    <% end %>
-  </div> 
+        <div class="panel-body">
+          <% @commented_restaurants.uniq.each do |restaurant| %>
+            <%= link_to (restaurant) do %>
+            <% #link_to restaurant_path(restaurant) do%>
+              <div class="my-restaurant">
+                <!-- <div class="avatar-restaurant" > -->
+                  <%= image_tag restaurant.image, class: "img-responsive center-block" %>
+                <!-- </div> -->
+                <% #link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>
+                <div class="center" ><%= restaurant.name %></div> 
+              </div>
+            <% end %>
+          <% end %>
+        </div> 
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= "#{@user.favorites.count}間收藏餐廳" %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <% @user.favorited_restaurants.each do |restaurant| %>
+            <%= link_to (restaurant) do %>
+            <% #link_to restaurant_path(restaurant) do%>
+              <div class="my-restaurant">
+                <!-- <div class="avatar-restaurant" > -->
+                  <%= image_tag restaurant.image, class: "img-responsive center-block" %>
+                <!-- </div> -->
+                <% #link_to "#{restaurant.name}", restaurant_path(restaurant), class: ""%>
+                <div class="center" ><%= restaurant.name %></div> 
+              </div>
+            <% end %>
+          <% end %>
+        </div> 
+      </div>
+    </div>
+
+  </div>
 </div>

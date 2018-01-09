@@ -8,23 +8,43 @@
 <h1>美食達人</h1>
 <hr>
 
-
-<% @users.each do |user| %>
-  <div class="container col-md-3 col-sm-4 col-xs-6 text-center user-item">
+<div class="small-box col-md-2 col-sm-4 col-xs-6">
     <div class="center">
-      <%= image_tag user.avatar, class: "img-responsive center-block" %>
+      <%= image_tag current_user.avatar, class: "img-responsive center-block img-circle" %>
     </div>
     <div class="center">
       <%= link_to "#{
-          if user.name 
-            user.name 
+          if current_user.name 
+            current_user.name 
           else 
-            user.email.split("@").first 
+            current_user.email.split("@").first 
           end 
-        }", user_path(user) %>
-    </div>
-    <div class="center">
-      <%= render partial: "shared/follow", locals: {user: user} %>
+        }", user_path(current_user) %>
     </div>
   </div>
+
+
+<% @users.each do |user| %>
+  <% if user!=current_user%>
+    <div class="small-box col-md-2 col-sm-4 col-xs-6">
+      <div class="center">
+        <%= image_tag user.avatar, class: "img-responsive center-block" %>
+      </div>
+      <div class="center">
+        <%= link_to "#{
+            if user.name 
+              user.name 
+            else
+              user.email.split("@").first 
+            end 
+          }", user_path(user) %>
+      </div>
+      <div class="center">
+        <%= render partial: "shared/follow", locals: {user: user} %>
+      </div>
+    </div>
+
+  <% end %>
+
 <% end %>
+<br>

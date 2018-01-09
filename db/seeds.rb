@@ -26,5 +26,14 @@ puts "Category created!"
 
 # Default admin
 User.destroy_all
-User.create(name:"Wahaha", email: "123@123.123", password: "123123", role: "admin", intro: "This is gourmet.")
+User.create(
+  name:"Wahaha", 
+  email: "123@123.123", 
+  password: "123123", 
+  role: "admin", 
+  intro: "This is gourmet.",
+  avatar: File.new(Rails.root.join('app', 'assets', 'images', "pic1_#{rand(72).to_s.rjust(3,'0')}.jpg")))
 puts "Default admin created!"
+
+
+

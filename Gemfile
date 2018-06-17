@@ -34,7 +34,6 @@ gem 'carrierwave'
 gem 'ffaker'
 gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.3.7'
-gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -50,6 +49,11 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'sqlite3'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'factory_bot_rails', "~> 4.0"
+  gem 'rails-controller-testing'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

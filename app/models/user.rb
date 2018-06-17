@@ -44,4 +44,12 @@ class User < ApplicationRecord
     self.friends.include?(user) || self.inverse_friends.include?(user)
     #all_friends.include?(user)
   end
+
+  def self.get_user_count
+    User.all.size
+  end
+
+  def get_comment_count
+    self.comments.all.size
+  end
 end
